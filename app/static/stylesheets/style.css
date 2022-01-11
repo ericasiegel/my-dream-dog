@@ -1,0 +1,87 @@
+/* Main Page Layout */
+* {
+    /* all elements in the page have border and padding included in width and height */
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    background-color: #dae7ff;
+}
+a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    transition: color .1s;
+}
+a:hover {
+    color:#003ba7;
+}
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    border-bottom: 1px solid #003ba7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1%;
+}
+header h1 {
+    font-size: 30px;
+}
+main {
+    flex: 1;
+    padding: 2% 4%;
+}
+footer {
+    border-top: 1px solid #003ba7;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 110%;
+}
+/* Buttons */
+.btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #225ca3;
+    font-size: 100%;
+    font-weight: bold;
+    transition: color .1s;
+    margin-left: 16px;
+}
+.btn-no-style:hover {
+    background: none;
+    color: #3486eb;
+}
+
+/* Dog List */
+ol {
+    /* take away list numbers */
+    list-style-type: none;
+}
+.post {
+    margin-bottom: 2%;
+    line-height: 150%;
+} 
+.post .title span {
+    font-style: italic;
+    font-size: 90%;
+    color: #7d7d7d;
+}
+.post-list {
+    margin: 0;
+    padding: 0;
+  }

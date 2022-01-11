@@ -1,4 +1,5 @@
 from flask import Flask
+from app.routes import home
 
 def create_app(test_config=None):
     # set up app config
@@ -12,8 +13,7 @@ def create_app(test_config=None):
         SECRET_KEY='my_dream_dog'
     )
     
-    @app.route('/hello')
-    def hello():
-        return 'My Dream Dog'
+    # register routes
+    app.register_blueprint(home)
     
     return app
