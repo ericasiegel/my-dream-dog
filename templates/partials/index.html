@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Tech News</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/">My Dream Dog</a>
+      </h1>
+      <nav>
+        {% if loggedIn == True %}
+        <a href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        {% else %}
+        <a href="/login">Login</a>
+        {% endif %}
+      </nav>
+    </header>
+    <main>
+      {% block body %}{% endblock %}
+    </main>
+    <footer>
+        © Erica Siegel - My Dream Dog 2022
+    </footer>
+  </div>
+  
+  {% if loggedIn %}
+  <script src="/javascript/logout.js"></script>
+  {% endif %}
+</body>
+
+</html>
