@@ -1,1 +1,31 @@
-dog breed info box
+<div class="card">
+    <img src={{ img }} alt={{ breed }} style="width:100%">
+    <div class="container">
+        <div class='cardHeader'>
+            <h4><b>{{ breed }}</b></h4>
+        </div>
+      <p class='stats'>
+          <ol>
+              <li>
+                <b>Breed Group:</b> {{ group }}
+              </li>
+              <li>
+                <b>Temperament:</b> {{ temp }}
+              </li>
+              <li>
+                <b>Breed Use:</b> {{ use }}
+              </li>
+              <li>
+                <b>Lifespan:</b> {{ lifespan }}
+              </li>
+              <li>
+                <b>Height:</b> {{ height }}
+              </li>
+              <li>
+                <b>Weight:</b> {{ weight }}
+              </li>
+          </ol>
+      </p>
+      <p><button>Add to Favorites</button></p>
+    </div>
+  </div>
