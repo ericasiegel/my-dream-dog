@@ -2,6 +2,7 @@ import requests
 import json
 
 breed_info = {}
+breed_list = []
 
 def breed_names():
     """
@@ -10,12 +11,17 @@ def breed_names():
     breeds_url = 'https://api.thedogapi.com/v1/breeds?48dbab43-41dd-4351-9528-5f3aa2a1bd39'
     breeds = requests.get(breeds_url)
     db_list = json.loads(breeds.text)
+    
     for n in db_list:
+        name_id ={}
         # print(n['id'])
         # print(n['name'])
         name = n['name']
         dog_id = n['id']
-        return name, dog_id
+        name_id['id']=dog_id
+        name_id['breed']=name
+        breed_list.append(name_id)
+
      
 def breed_stats(id):
     """
@@ -46,6 +52,8 @@ def breed_stats(id):
 
     
 breed_stats(29)  
-print(breed_info)  
+breed_names()
+# print(breed_info) 
+# print(breed_list) 
     
 

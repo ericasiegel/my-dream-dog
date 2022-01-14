@@ -1,12 +1,36 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
+      <!-- Hero content: will be in the middle -->
+    <section class="hero is-info is-small">
+      <div class="hero-body is-info">
+        <div class="container has-text-centered">
+          <p class="title">
+            Title
+          </p>
+          <p class="subtitle">
+            Subtitle
+          </p>
+        </div>
+      </div>
+    </section>
 <ol class="post-list">
   <li>
     This page will contain basic info on how to use the app 
   </li>
   <li>
     Dropdown list containing selectable breed names 
+    <div class="btn-group">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Pick A Dog Breed
+      </button>
+      <div class="dropdown-menu">
+        {% for b in breeds %}
+          <a class="dropdown-item btn-info" id='{{ b['id']}}'>{{ b['breed']}}</a>
+        {% endfor %}
+
+      </div>
+    </div>
   </li>
   <li>
     {% include "partials/dog-info.html" %}

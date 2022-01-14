@@ -28,7 +28,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-header {
+/* header {
     border-bottom: 1px solid #003ba7;
     display: flex;
     justify-content: space-between;
@@ -37,7 +37,7 @@ header {
 }
 header h1 {
     font-size: 30px;
-}
+} */
 main {
     flex: 1;
     padding: 2% 4%;
@@ -48,6 +48,10 @@ footer {
     justify-content: center;
     padding: 1%;
     font-size: 110%;
+}
+h1 {
+    font-size: 20px;
+    text-decoration: wavy;
 }
 /* Menu Buttons */
 .btn-no-style {

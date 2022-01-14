@@ -5,25 +5,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Dream Dog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  
 </head>
 
 <body>
+  <header>
+    <section class="hero is-info is-small">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <h1>
+                  My Dream Dog
+                </h1>
+              </a>
+              <span class="navbar-burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span>hello</span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                {% if loggedIn == True %}
+                  <a class="navbar-item">
+                    Dashboard
+                  </a>
+                  <a class="navbar-item">
+                    Quiz
+                  </a>
+                  <span class="navbar-item">
+                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                      <span>Logout</span>
+                    </a>
+                  </span>
+                {% else %}
+                  <span class="navbar-item">
+                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                      <span>Login</span>
+                    </a>
+                  </span>
+                  <span class="navbar-item">
+                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                      <span>Signup</span>
+                    </a>
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    
+  </header>
   <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">My Dream Dog</a>
-      </h1>
-      <nav>
-        {% if loggedIn == True %}
-        <a href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">Logout</button>
-        {% else %}
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
-        {% endif %}
-      </nav>
-    </header>
+    
     <main>
       {% block body %}{% endblock %}
     </main>
@@ -35,6 +76,7 @@
   {% if loggedIn %}
   <script src="/javascript/logout.js"></script>
   {% endif %}
+ 
 </body>
 
 </html>
