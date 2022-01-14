@@ -1,31 +1,38 @@
-<div class="card">
-    <img src={{ img }} alt={{ breed }} style="width:100%">
-    <div class="container">
-        <div class='cardHeader'>
-            <h4><b>{{ breed }}</b></h4>
-        </div>
-      <p class='stats'>
-          <ol>
-              <li>
-                <b>Breed Group:</b> {{ group }}
-              </li>
-              <li>
-                <b>Temperament:</b> {{ temp }}
-              </li>
-              <li>
-                <b>Breed Use:</b> {{ use }}
-              </li>
-              <li>
-                <b>Lifespan:</b> {{ lifespan }}
-              </li>
-              <li>
-                <b>Height:</b> {{ height }}
-              </li>
-              <li>
-                <b>Weight:</b> {{ weight }}
-              </li>
-          </ol>
-      </p>
-      <p><button>Add to Favorites</button></p>
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src={{ img }} alt={{ breed }}>
+      </figure>
     </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ breed }}</p>
+          <p class="subtitle is-6">{{ group }}</p>
+        </div>
+      </div>
+      <div class="content">
+        <ol>
+          <li>
+            <b>Temperament:</b> {{ temp }}
+          </li>
+          <li>
+            <b>Breed Use:</b> {{ use }}
+          </li>
+          <li>
+            <b>Lifespan:</b> {{ lifespan }}
+          </li>
+          <li>
+            <b>Height:</b> {{ height }}
+          </li>
+          <li>
+            <b>Weight:</b> {{ weight }}
+          </li>
+        </ol>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" class="card-footer-item">Save</a>
+      <a href="#" class="card-footer-item">Delete</a>
+    </footer>
   </div>

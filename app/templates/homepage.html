@@ -5,33 +5,31 @@
     <section class="hero is-info is-small">
       <div class="hero-body is-info">
         <div class="container has-text-centered">
-          <p class="title">
-            Title
-          </p>
           <p class="subtitle">
-            Subtitle
+            Choose a dog breed below to find out more...
+          </p>
+          <p>
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button is-light is-primary is-normal" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Select a Dog Breed</span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  {% for b in breeds %}
+                    <a id='{{ b['id'] }}' class="dropdown-item is-info is-small">
+                      {{ b['breed'] }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
           </p>
         </div>
       </div>
     </section>
 <ol class="post-list">
-  <li>
-    This page will contain basic info on how to use the app 
-  </li>
-  <li>
-    Dropdown list containing selectable breed names 
-    <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Pick A Dog Breed
-      </button>
-      <div class="dropdown-menu">
-        {% for b in breeds %}
-          <a class="dropdown-item btn-info" id='{{ b['id']}}'>{{ b['breed']}}</a>
-        {% endfor %}
-
-      </div>
-    </div>
-  </li>
   <li>
     {% include "partials/dog-info.html" %}
   </li>

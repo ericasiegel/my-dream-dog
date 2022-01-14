@@ -10,7 +10,7 @@ bp = Blueprint('home', __name__, url_prefix='/')
 def index():
     # dropdown
     breeds = bList
-    print(breeds)
+    # print(breeds)
     # breed card info
     breed = stats['name']
     use = stats['use']
