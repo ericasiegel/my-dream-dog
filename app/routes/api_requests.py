@@ -27,32 +27,23 @@ def breed_stats(id):
     param = {'breed_id': str(id)}
     response = requests.get(breed_url, params=param)
     data = json.loads(response.text)[0]
-    # print(data)
     name = data['breeds'][0]['name']
     breed_info['name']=name
-    # print('name: ', name)
     weight = data['breeds'][0]['weight']['imperial']
     breed_info['weight']=weight
-    # print('weight(lbs): ', weight)
     height = data['breeds'][0]['height']['imperial']
     breed_info['height']=height
-    # print('height(inches): ', height)
     use = data['breeds'][0]['bred_for']
     breed_info['use']=use
-    # print('use: ', use)
     group = data['breeds'][0]['breed_group']
     breed_info['group']=group
-    # print('breed group: ', group)
     temp = data['breeds'][0]['temperament']
     breed_info['temp']=temp
-    # print('temperament: ', temp)
     lifespan = data['breeds'][0]['life_span']
     breed_info['lifespan']=lifespan
-    # print('life span: ', lifespan)
     image = data['url']
     breed_info['image']=image
-    # print('image: ', image)
-    # return name, weight, height, use, group, temp, lifespan, image
+
     
 breed_stats(29)  
 print(breed_info)  

@@ -49,11 +49,11 @@ footer {
     padding: 1%;
     font-size: 110%;
 }
-/* Buttons */
+/* Menu Buttons */
 .btn-no-style {
     background: none;
     border: none;
-    padding: 0;
+    padding: 20px;
     cursor: pointer;
     text-decoration: none;
     color: #225ca3;
@@ -65,6 +65,7 @@ footer {
 .btn-no-style:hover {
     background: none;
     color: #3486eb;
+    
 }
 
 /* Dog Card */
