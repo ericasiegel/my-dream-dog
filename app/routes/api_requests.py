@@ -51,7 +51,7 @@ def breed_stats(id):
     breed_info['image']=image
 
     
-breed_stats(29)  
+# breed_stats(29)  
 breed_names()
 # print(breed_info) 
 # print(breed_list) 
