@@ -14,12 +14,8 @@ def breed_names():
     
     for n in db_list:
         name_id ={}
-        # print(n['id'])
-        # print(n['name'])
-        name = n['name']
-        dog_id = n['id']
-        name_id['id']=dog_id
-        name_id['breed']=name
+        name_id['id']=n['id']
+        name_id['breed']=n['name']
         breed_list.append(name_id)
 
      
@@ -33,25 +29,29 @@ def breed_stats(id):
     param = {'breed_id': str(id)}
     response = requests.get(breed_url, params=param)
     data = json.loads(response.text)[0]
-    name = data['breeds'][0]['name']
-    breed_info['name']=name
-    weight = data['breeds'][0]['weight']['imperial']
-    breed_info['weight']=weight
-    height = data['breeds'][0]['height']['imperial']
-    breed_info['height']=height
-    use = data['breeds'][0]['bred_for']
-    breed_info['use']=use
-    group = data['breeds'][0]['breed_group']
-    breed_info['group']=group
-    temp = data['breeds'][0]['temperament']
-    breed_info['temp']=temp
-    lifespan = data['breeds'][0]['life_span']
-    breed_info['lifespan']=lifespan
-    image = data['url']
-    breed_info['image']=image
-
     
-# breed_stats(29)  
+    # get data from api and add to breed_info{} dictionary
+    try:
+        breed_info['name'] = data['breeds'][0]['name']
+        breed_info['weight'] = data['breeds'][0]['weight']['imperial']
+        breed_info['height'] = data['breeds'][0]['height']['imperial']
+        breed_info['use'] = data['breeds'][0]['bred_for']
+        breed_info['group'] = data['breeds'][0]['breed_group']
+        breed_info['temp'] = data['breeds'][0]['temperament'] 
+        breed_info['lifespan'] = data['breeds'][0]['life_span']
+        breed_info['image'] = data['url']
+    except:
+        breed_info['name'] = data['breeds'][0]['name']
+        breed_info['weight'] = data['breeds'][0]['weight']['imperial']
+        breed_info['height'] = data['breeds'][0]['height']['imperial']
+        # breed_info['use'] = data['breeds'][0]['bred_for']
+        breed_info['group'] = data['breeds'][0]['breed_group']
+        breed_info['temp'] = data['breeds'][0]['temperament'] 
+        breed_info['lifespan'] = data['breeds'][0]['life_span']
+        breed_info['image'] = data['url']
+        
+        
+        
 breed_names()
 # print(breed_info) 
 # print(breed_list) 

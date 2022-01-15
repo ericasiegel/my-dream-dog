@@ -9,22 +9,12 @@
             Choose a dog breed below to find out more...
           </p>
           <p>
-            <div class="dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button is-light is-primary is-normal" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Select a Dog Breed</span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  {% for b in breeds %}
-                    <a id='{{ b['id'] }}' class="dropdown-item is-info is-small">
-                      {{ b['breed'] }}
-                    </a>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
+            <select name='all_breeds' method='POST' action='/'>
+              <option value='0'>Select a Dog Breed...</option>
+              {% for b in breeds %}
+              <option value='{{ b['id'] }}'>{{ b['breed']}}</option>
+              {% endfor %}
+            </select>
           </p>
         </div>
       </div>
