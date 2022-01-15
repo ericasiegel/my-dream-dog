@@ -1,32 +1,32 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src={{ img }} alt={{ breed }}>
+        <img src={{ stats['image'] }} alt={{ stats['breed'] }}>
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">{{ breed }}</p>
-          <p class="subtitle is-6">{{ group }}</p>
+          <p class="title is-4">{{ stats['name'] }}</p>
+          <p class="subtitle is-6">{{ stats['group'] }}</p>
         </div>
       </div>
       <div class="content">
         <ol>
           <li>
-            <b>Temperament:</b> {{ temp }}
+            <b>Temperament:</b> {{ stats['temp'] }}
           </li>
           <li>
-            <b>Breed Use:</b> {{ use }}
+            <b>Breed Use:</b> {{ stats['use'] }}
           </li>
           <li>
-            <b>Lifespan:</b> {{ lifespan }}
+            <b>Lifespan:</b> {{ stats['lifespan'] }}
           </li>
           <li>
-            <b>Height:</b> {{ height }}
+            <b>Height:</b> {{ stats['height'] }} in.
           </li>
           <li>
-            <b>Weight:</b> {{ weight }}
+            <b>Weight:</b> {{ stats['weight'] }} lbs.
           </li>
         </ol>
       </div>
