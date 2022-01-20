@@ -14,12 +14,18 @@ bp = Blueprint('home', __name__, url_prefix='/')
 # route to index.html
 @bp.route('/', methods=['GET', 'POST'])
 def index():
+
     # try:
     #     random_num = random.randint(1, 264)
     #     breed_stats(random_num)
     # except:
     #     breed_stats(165)
 
+    if request.method == 'POST':
+        # breed_id = data.value
+        breed_id = list(request.form.listvalues())[0][0]
+        print(breed_id)
+        breed_stats(breed_id)
     
     return render_template('homepage.html', 
                         # card info
