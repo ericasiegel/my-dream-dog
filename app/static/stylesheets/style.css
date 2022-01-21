@@ -141,3 +141,21 @@ ol {
     margin: 0;
     padding: 0;
   }
+
+/* dashboard */
+.container {
+    display: flex; /* defines a flex container */
+    flex-direction: row; /* aligns content along the main axes */
+    justify-content: space-between; /* items are evenly distributed in the line */
+    align-items: center; /* items are centered on the cross axis */
+}
+.dash {
+    flex: 4; /* width of the flexbox child */
+    padding: 10px;
+}
+.saved {
+    background-color: white;
+    border: groove blue;
+    border-radius: 10px;
+    padding: 10px;
+}
