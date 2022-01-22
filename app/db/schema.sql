@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS fav_dog_db;
+
+CREATE DATABASE fav_dog_db;

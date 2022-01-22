@@ -32,25 +32,25 @@
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
                 {% if loggedIn == True %}
-                  <a class="navbar-item">
+                  <a  href='/dashboard' class="navbar-item">
                     Dashboard
                   </a>
-                  <a class="navbar-item">
+                  <a href='/quiz' class="navbar-item">
                     Quiz
                   </a>
                   <span class="navbar-item">
-                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                    <a href='' class="button is-link is-light is-rounded is-outlined is-small">
                       <span>Logout</span>
                     </a>
                   </span>
                 {% else %}
                   <span class="navbar-item">
-                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                    <a href='/login' class="button is-link is-light is-rounded is-outlined is-small">
                       <span>Login</span>
                     </a>
                   </span>
                   <span class="navbar-item">
-                    <a class="button is-link is-light is-rounded is-outlined is-small">
+                    <a href='/signup' class="button is-link is-light is-rounded is-outlined is-small">
                       <span>Signup</span>
                     </a>
                   </span>

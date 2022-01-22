@@ -45,7 +45,7 @@ def breed_stats(id):
         breed_info['weight'] = data['breeds'][0]['weight']['imperial']
         breed_info['height'] = data['breeds'][0]['height']['imperial']
         # breed_info['use'] = data['breeds'][0]['bred_for']
-        breed_info['group'] = data['breeds'][0]['breed_group']
+        # breed_info['group'] = data['breeds'][0]['breed_group']
         breed_info['temp'] = data['breeds'][0]['temperament'] 
         breed_info['lifespan'] = data['breeds'][0]['life_span']
         breed_info['image'] = data['url']
