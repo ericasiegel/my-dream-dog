@@ -1,38 +1,47 @@
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src={{ stats['image'] }} alt={{ stats['breed'] }}>
-      </figure>
+<div class='dog-card'>
+  <div class='card-header'>
+    <div>
+      <h2>{{ stats['name'] }}</h2>
     </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">{{ stats['name'] }}</p>
-          <p class="subtitle is-6">{{ stats['group'] }}</p>
-        </div>
-      </div>
-      <div class="content">
+    <div>
+      <h3>{{ stats['group'] }}</h3>
+    </div>
+  </div>
+
+  <div class='card-main'>
+    <div class='card-img'>
+      <img src={{ stats['image'] }} alt={{ stats['breed'] }}>
+    </div>
+    <div class='card-right'>
+      <div class='card-content'>
         <ol>
           <li>
-            <b>Temperament:</b> {{ stats['temp'] }}
+            <b>Temperament:</b>
+            <br/> 
+            {{ stats['temp'] }}
           </li>
           <li>
-            <b>Breed Use:</b> {{ stats['use'] }}
+            <b>Breed Use:</b>
+            <br/> 
+            {{ stats['use'] }}
           </li>
           <li>
-            <b>Lifespan:</b> {{ stats['lifespan'] }}
+            <b>Lifespan:</b>
+            <br/> 
+             {{ stats['lifespan'] }}
           </li>
           <li>
-            <b>Height:</b> {{ stats['height'] }} in.
+            <b>Height:</b>
+            <br/> 
+             {{ stats['height'] }} in.
           </li>
           <li>
-            <b>Weight:</b> {{ stats['weight'] }} lbs.
+            <b>Weight:</b>
+            <br/> 
+             {{ stats['weight'] }} lbs.
           </li>
         </ol>
       </div>
     </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item">Save</a>
-      <a href="#" class="card-footer-item">Delete</a>
-    </footer>
   </div>
+</div>

@@ -3,10 +3,15 @@
 {% block body %}
 <div class='container'>
     <div class='dash'>
-        this is the main part of the dashboard
+        {% include "partials/dog-info.html" %}
     </div>
     <div class='saved'>
-        this will hold the saved dogs
+        <div class='saved-card-header'>
+            <h3>Your Saved Dog Breeds</h3>
+        </div>
+        <div class='saved-card-content'>
+            <button class='breed-btn'>breed name</button>
+        </div>
     </div>
 </div>
 {% endblock %}
