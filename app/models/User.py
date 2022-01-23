@@ -1,6 +1,7 @@
 import email
 from app.db import Base
-from sqlalchemy import Column, Integer, String, null
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import validates
 
 # create a User class that inherits from the Base class
 class User(Base):
@@ -9,3 +10,15 @@ class User(Base):
     username = Column(String(50), nullable=False)
     email = Column(String(50), nullable=False, unique=True)
     password = Column(String(100), nullable=False)
+    
+    @validates('email')
+    def validate_email(self, key, email):
+        #make sure email contains @ character
+        assert '@' in email # if false, it will return an error
+        return email
+    
+    @validates('password')
+    def validate_password(self, key, password):
+        assert len(password) > 4
+        
+        return password
