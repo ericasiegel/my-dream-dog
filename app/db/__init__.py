@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
+from flask import g
 
 load_dotenv()
 
@@ -13,6 +14,20 @@ engine = create_engine(getenv('DB_URL'), echo=True, pool_size=20, max_overflow=0
 Session = sessionmaker(bind=engine)
 # helps us map the models to real MySQL tables
 Base = declarative_base()
+
+# initiates the connection between Base and the database
+def init_db():
+    Base.metadata.create_all(engine)
+
+
+def get_db():
+    # this function saves the current connection on the g object if it's not already there
+    # then it returns the connection from the g object instead of creating a new Session instance each time
+    if 'db' not in g:
+        # store db connection in app context
+        g.db = Session()
+    
+    return g.db
 
 # put 'python3 app/db/__init__.py' into terminal to test db connection
 # if there are no errors the connection was successful
