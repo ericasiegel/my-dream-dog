@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, jsonify, render_template
+from flask import Blueprint, request, redirect, jsonify, render_template, session
 from app.models import User
 from app.db import get_db
 
@@ -24,6 +24,9 @@ def signup():
             db.add(newUser)
             db.commit()
             
+            session.clear()
+            session['user_id'] = newUser.id
+            session['loggedIn'] = True
             #redirect user to dashboard after form is submitted
             return redirect('/dashboard')
     except:
@@ -34,3 +37,11 @@ def signup():
             'signup.html',
             message=message
             )
+        
+        
+@bp.route('/users/logout', methods=['POST'])
+def logout():
+    #remove session variables
+    if request.method=='POST':
+        session.clear()
+        return '', 204

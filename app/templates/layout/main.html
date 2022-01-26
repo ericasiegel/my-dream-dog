@@ -20,12 +20,12 @@
             <div class="navbar-brand">
               <a class="navbar-item">
                 <h1 class='title'>
-                  My Dream Dog
+                  <a href='/'>My Dream Dog</a>
                 </h1>
               </a>
               <span class="navbar-burger" data-target="navbarMenuHeroA">
                 <span></span>
-                <span>hello</span>
+                <span></span>
                 <span></span>
               </span>
             </div>
@@ -38,22 +38,12 @@
                   <a href='/quiz' class="navbar-item">
                     Quiz
                   </a>
-                  <span class="navbar-item">
-                    <a href='' class="button is-link is-light is-rounded is-outlined is-small">
-                      <span>Logout</span>
-                    </a>
-                  </span>
+                  <form action='/api/users/logout' method='POST'>
+                    <button class='main-button' type='submit'>Logout</button>
+                  </form>
                 {% else %}
-                  <span class="navbar-item">
-                    <a href='/login' class="button is-link is-light is-rounded is-outlined is-small">
-                      <span>Login</span>
-                    </a>
-                  </span>
-                  <span class="navbar-item">
-                    <a href='/signup' class="button is-link is-light is-rounded is-outlined is-small">
-                      <span>Signup</span>
-                    </a>
-                  </span>
+                  <button class='main-button' onclick="location.href='/login';">Login</button>
+                  <button class='main-button' onclick="location.href='/signup';">Signup</button>
                 {% endif %}
               </div>
             </div>
@@ -73,9 +63,7 @@
     </footer>
   </div>
   
-  {% if loggedIn %}
-  <script src="/javascript/logout.js"></script>
-  {% endif %}
+
  
 </body>
 

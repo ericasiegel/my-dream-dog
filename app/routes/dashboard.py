@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 from app.models import Breed
 from app.db import get_db
 from .api_requests import breed_stats
@@ -12,5 +12,7 @@ def dash():
     breed_stats(165)
     return render_template('dashboard.html', 
                             # card info
-                           stats=stats
+                           stats=stats,
+                           #log session info
+                            loggedIn=session.get('loggedIn')
                            )

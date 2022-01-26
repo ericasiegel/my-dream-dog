@@ -1,6 +1,6 @@
 from crypt import methods
 from tkinter.tix import Select
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session, redirect
 import random
 
 # import files
@@ -31,14 +31,19 @@ def index():
     return render_template('homepage.html', 
                         # card info
                            stats=stats,
-                       
                         # dropdown info
-                           breeds=breeds
+                           breeds=breeds,
+                        #log session info
+                        loggedIn=session.get('loggedIn')
                            )
 # login page route
 @bp.route('/login')
 def login():
-    return render_template('login.html')
+    # not yet logged in
+    if session.get('loggedIn') is None:
+        return render_template('login.html')
+    
+    return redirect('/dashboard')
 # signup page route
 @bp.route('/signup')
 def signup():
