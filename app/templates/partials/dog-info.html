@@ -14,6 +14,20 @@
     </div>
     <div class='card-right'>
       <div class='card-content'>
+        {% if loggedIn == True %}
+        <div class='card-icons'>
+          <form method='POST' action=''>
+            <button type='submit' value='{{ stats['id'] }}'>
+              <i class="far fa-save fa-lg"></i>
+            </button>
+          </form>
+          <form method='POST' action=''>
+            <button type='submit' value='{{ stats['id'] }}'>
+              <i class="far fa-trash-alt fa-lg"></i>
+            </button>
+          </form>
+        </div>
+        {% endif %}
         <ol>
           <li>
             <b>Temperament:</b>
