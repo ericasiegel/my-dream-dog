@@ -1,6 +1,10 @@
-from flask import Blueprint, request, redirect, jsonify, render_template, session
-from app.models import User
+from django.shortcuts import render
+from flask import Blueprint, request, redirect, jsonify, render_template, session, flash
+from app.models import User, Breed
 from app.db import get_db
+
+from .api_requests import breed_stats
+from .api_requests import breed_info as stats
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -71,3 +75,29 @@ def login():
         session['loggedIn'] = True
         
         return redirect('/dashboard')
+    
+@bp.route('/breeds', methods=['POST'])
+def saved_breeds():
+    db = get_db()
+    
+    try:
+        if request.method == 'POST':
+            data = request.form
+            # print(data['id'])
+            newBreed = Breed(
+                breed_id = data['id'],
+                user_id = session.get('user_id')
+            )
+            
+            db.add(newBreed)
+            db.commit()
+            # breed_stats(data['id'])
+            
+            flash('Breed saved')
+            return redirect('/')
+            
+           
+    except:
+        flash('Already saved!')
+        return redirect('/')
+    

@@ -32,6 +32,7 @@ def breed_stats(id):
     
     # get data from api and add to breed_info{} dictionary
     try:
+        breed_info['id'] = data['breeds'][0]['id']
         breed_info['name'] = data['breeds'][0]['name']
         breed_info['weight'] = data['breeds'][0]['weight']['imperial']
         breed_info['height'] = data['breeds'][0]['height']['imperial']
@@ -41,6 +42,7 @@ def breed_stats(id):
         breed_info['lifespan'] = data['breeds'][0]['life_span']
         breed_info['image'] = data['url']
     except:
+        breed_info['id'] = data['breeds'][0]['id']
         breed_info['name'] = data['breeds'][0]['name']
         breed_info['weight'] = data['breeds'][0]['weight']['imperial']
         breed_info['height'] = data['breeds'][0]['height']['imperial']

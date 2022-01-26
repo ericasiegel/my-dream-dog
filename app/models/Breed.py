@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 class Breed(Base):
     __tablename__ = 'breeds'
     id = Column(Integer, primary_key=True)
-    breed_id = Column(Integer, nullable=False)
+    breed_id = Column(Integer, nullable=False, unique=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     
     user = relationship('User')
