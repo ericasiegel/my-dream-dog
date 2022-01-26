@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, jsonify
+from flask import Blueprint, request, redirect, jsonify, render_template
 from app.models import User
 from app.db import get_db
 
@@ -27,5 +27,10 @@ def signup():
             #redirect user to dashboard after form is submitted
             return redirect('/dashboard')
     except:
-        # insert failed, so send error to front end
-        return jsonify(message = 'Signup failed'), 500
+        # insert failed, so send error to front end, and rollback
+        db.rollback()
+        message = 'Signup failed, try again'
+        return render_template(
+            'signup.html',
+            message=message
+            )
