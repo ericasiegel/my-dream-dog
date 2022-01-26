@@ -11,16 +11,16 @@
     </div>
 </section>
 <div class='form-container'>
-    <form class="signup-form">
+    <form class="signup-form" method='POST' action='/api/users'>
         <div class='form-section'>
             <div class='form-element'>
-                <input type="text"  onfocus="if(this.value == 'Username') {this.value='';}" onblur="if(this.value == '') { this.value = 'Username'; }" value="Username" id="username-signup" />
+                <input type="text" name='username'  onfocus="if(this.value == 'Username') {this.value='';}" onblur="if(this.value == '') { this.value = 'Username'; }" value="Username" id="username-signup" />
             </div>
             <div  class='form-element'>
-                <input type="text" onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-signup" />
+                <input type="text" name='email' onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-signup" />
             </div>
             <div class='form-element'>
-                <input type="text" onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-signup" />
+                <input type="text" name='password' onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-signup" />
             </div>
         </div>
         <div>
