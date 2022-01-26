@@ -173,6 +173,7 @@ button {
     border: 2px solid blue;
     border-radius: 10px;
     padding: 10px;
+    margin: 10px;
     align-self: flex-start;
     width: 250px;
 }
@@ -200,4 +201,53 @@ button {
     width: 100%;
     border: 1px dotted blue;
     background-color:aliceblue;
+}
+
+/* Forms */
+.form-container {
+    display: flex; /* defines a flex container */
+    justify-content: center;
+}
+input {
+    background-color:lightskyblue;
+    border: none;
+    text-align: center;
+}
+input:focus {
+    background-color:deepskyblue;
+    border: none;
+    text-align: center;
+    outline: none;
+    resize: none;
+
+}
+input:active {
+    text-decoration: none;
+}
+.form-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-element label {
+    display: flex;
+    justify-content: center;
+}
+.form-element input {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0 5px 0;
+
+}
+.form-button {
+    background-color:#cceeff;
+    border: 1px solid lightskyblue;
+    border-radius: 10px;
+    padding: 10px;
+}
+.form-button:hover {
+    background-color:#99ddff;
+    border: 1px solid lightskyblue;
+    border-radius: 10px;
+    padding: 10px;
 }

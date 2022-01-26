@@ -1,5 +1,32 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
-Signup Form Here
+<section class="hero is-info is-small">
+    <div class="hero-body is-info">
+      <div class="has-text-centered">
+        <p class="subtitle">
+          Sign Up
+        </p>
+      </div>
+    </div>
+</section>
+<div class='form-container'>
+    <form class="signup-form">
+        <div class='form-section'>
+            <div class='form-element'>
+                <input type="text"  onfocus="if(this.value == 'Username') {this.value='';}" onblur="if(this.value == '') { this.value = 'Username'; }" value="Username" id="username-signup" />
+            </div>
+            <div  class='form-element'>
+                <input type="text" onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-signup" />
+            </div>
+            <div class='form-element'>
+                <input type="text" onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-signup" />
+            </div>
+        </div>
+        <div>
+          <button class='form-button' type="submit">Signup</button>
+        </div>
+      </form>
+</div>
+
 {% endblock %}
