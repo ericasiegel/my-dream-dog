@@ -26,3 +26,10 @@ class User(Base):
         assert len(password) > 4
         # encrypt password
         return bcrypt.hashpw(password.encode('utf-8'), salt)
+    
+    def verify_password(self, password):
+        # check the incoming password ('password' parameter) to the one saved on the User object ('self' parameter)
+        return bcrypt.checkpw(
+            password.encode('utf-8'),
+            self.password.encode('utf-8')
+        )

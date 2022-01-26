@@ -44,4 +44,30 @@ def logout():
     #remove session variables
     if request.method=='POST':
         session.clear()
-        return '', 204
+        return redirect('/')
+    
+    
+@bp.route('/users/login', methods=['POST'])
+def login():
+    db = get_db()
+    if request.method == 'POST':
+        data = request.form
+        try:
+            user = db.query(User).filter(User.email == data['email']).one()
+        except:
+            message = "Email doesn't exist"
+            return render_template(
+                'login.html',
+                message=message
+                ) 
+        if user.verify_password(data['password']) == False:
+            message = 'Incorrect Password'
+            return render_template(
+                'login.html',
+                message=message
+                ) 
+        session.clear()
+        session['user_id'] = user.id
+        session['loggedIn'] = True
+        
+        return redirect('/dashboard')

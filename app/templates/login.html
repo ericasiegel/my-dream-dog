@@ -11,13 +11,13 @@
     </div>
 </section>
 <div class='form-container'>
-    <form class="login-form" method='POST'>
+    <form class="login-form" method='POST' action='/api/users/login'>
         <div class='form-section'>
             <div  class='form-element'>
-                <input type="text" onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-login" />
+                <input type="text" name='email' onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-login" />
             </div>
             <div class='form-element'>
-                <input type="text" onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-login" />
+                <input type="text" name='password' onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-login" />
             </div>
         </div>
         <div>
@@ -25,4 +25,5 @@
         </div>
       </form>
 </div>
+<p align="center">{{ message }}</p>
 {% endblock %}
