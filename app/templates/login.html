@@ -1,5 +1,28 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
-login Form Here
+<section class="hero is-info is-small">
+    <div class="hero-body is-info">
+      <div class="has-text-centered">
+        <p class="subtitle">
+          Log In
+        </p>
+      </div>
+    </div>
+</section>
+<div class='form-container'>
+    <form class="login-form">
+        <div class='form-section'>
+            <div  class='form-element'>
+                <input type="text" onfocus="if(this.value == 'Email') {this.value='';}" onblur="if(this.value == '') { this.value = 'Email'; }" value="Email" id="email-login" />
+            </div>
+            <div class='form-element'>
+                <input type="text" onfocus="if(this.value == 'Password') {this.value='';}" onblur="if(this.value == '') { this.value = 'Password'; }" value="Password" id="password-login" />
+            </div>
+        </div>
+        <div>
+          <button class='form-button' type="submit">Login</button>
+        </div>
+      </form>
+</div>
 {% endblock %}
