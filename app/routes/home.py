@@ -38,6 +38,12 @@ def index():
         .filter(Breed.user_id == session.get('user_id'))
         .all()
     )
+    ids = []
+    # print(single_id.__list__)
+    for s in single_id:
+        bid = s.__dict__['breed_id']
+        ids.append(bid)
+        # print(s.__dict__)
 
     return render_template('homepage.html', 
                         # card info
@@ -46,6 +52,7 @@ def index():
                            breeds=breeds,
                         # saved breed names
                            saved=single_id,
+                           ids=ids,
                         #log session info
                         loggedIn=session.get('loggedIn')
                            )

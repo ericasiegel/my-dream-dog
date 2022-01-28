@@ -27,20 +27,14 @@ def dash():
     else:
         attribute = 'hidden'
         message = ''
-        
-    
-    
-    
-    # if request.method == 'POST':
-    #     data = request.form
-    #     breed_stats(data['id'])
-    # else:
-    #     try:
-    #         random_num = random.randint(1, 264)
-    #         breed_stats(random_num)
-    #     except:
-    #         breed_stats(200)
- 
+
+    ids = []
+    # print(single_id.__list__)
+    for s in single_id:
+        bid = s.__dict__['breed_id']
+        ids.append(bid)
+        # print(s.__dict__)
+    # print(ids)
         
     return render_template('dashboard.html', 
                             # card info
@@ -50,5 +44,6 @@ def dash():
                             attribute=attribute,
                             message=message,
                            #log session info
+                           ids=ids,
                             loggedIn=session.get('loggedIn')
                            )
