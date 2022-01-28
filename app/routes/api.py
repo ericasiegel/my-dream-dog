@@ -48,7 +48,7 @@ def logout():
     #remove session variables
     if request.method=='POST':
         session.clear()
-        return redirect('/')
+        return redirect('/dashboard')
     
     
 @bp.route('/users/login', methods=['POST'])
@@ -74,32 +74,48 @@ def login():
         session['user_id'] = user.id
         session['loggedIn'] = True
         
-        return redirect('/')
+        return redirect('/dashboard')
     
-@bp.route('/breeds', methods=['POST'])
+@bp.route('/breeds', methods=['POST', 'DELETE'])
 def saved_breeds():
     db = get_db()
     
     try:
         if request.method == 'POST':
             data = request.form
-            # print(data['id'])
+
+            # print(data['name'])
             newBreed = Breed(
                 breed_id = data['id'],
+                name = data['name'],
                 user_id = session.get('user_id')
             )
             
             db.add(newBreed)
             db.commit()
             # breed_stats(data['id'])
+
             
             message = 'Breed Saved!'
             # return message
-            return redirect('/')
-            
+            return redirect('/dashboard')
+
            
     except:
+        db.rollback()
         message = 'Breed Already Saved!'
         # return message
         return redirect('/')
-    
+
+@bp.route('/breeds/<id>', methods=['DELETE'])
+def delete():
+    db = get_db()
+    if request.method == 'DELETE':
+        print(id)
+    # try:
+    #     # delete dog from databse
+    #     db.delete(db.query(Breed).filter(Breed.breed_id == id).one())
+    #     db.commit()
+    # except:
+    #     db.rollback()
+    #     return redirect('/')

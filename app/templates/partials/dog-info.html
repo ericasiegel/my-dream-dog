@@ -17,12 +17,13 @@
         {% if loggedIn == True %}
         <div class='card-icons'>
           <form method='POST' action='/api/breeds' id='norefresh'>
+            <input type='hidden' name='name' value="{{ stats['name'] }}"></input>
             <button type='submit' name='id' value={{ stats['id'] }}>
               <i class="far fa-save fa-lg"></i>
             </button>
           </form>
-          <form method='POST' action='/' id='norefresh'>
-            <button type='submit' value={{ stats['id'] }}>
+          <form method='DELETE' action='/api/breeds/' id='norefresh'>
+            <button type='submit' name='id' value={{ stats['id'] }}>
               <i class="far fa-trash-alt fa-lg"></i>
             </button>
           </form>

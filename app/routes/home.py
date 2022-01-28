@@ -1,12 +1,16 @@
-from crypt import methods
-from tkinter.tix import Select
-from flask import Blueprint, render_template, request, session, redirect
+# from crypt import methods
+# from tkinter.tix import Select
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 import random
+import json
 
 # import files
 from .api_requests import breed_stats
 from .api_requests import breed_info as stats
 from .api_requests import breed_list as breeds
+from .api_requests import breed_one
+from app.models import Breed
+from app.db import get_db
 
 # Blueprint() lets us consolidate routes into a single bp object
 bp = Blueprint('home', __name__, url_prefix='/')
@@ -14,8 +18,7 @@ bp = Blueprint('home', __name__, url_prefix='/')
 # route to index.html
 @bp.route('/', methods=['GET', 'POST'])
 def index():
-    # if 'Submit' != 'Submit':
-    
+    # dispay the breed list for dropdown and breed card
     if request.method == 'POST':
         # breed_id = data.value
         breed_id = list(request.form.listvalues())[0][0]
@@ -27,12 +30,14 @@ def index():
             breed_stats(random_num)
         except:
             breed_stats(165)
-    
+            
+
     return render_template('homepage.html', 
                         # card info
                            stats=stats,
                         # dropdown info
                            breeds=breeds,
+                        
                         #log session info
                         loggedIn=session.get('loggedIn')
                            )

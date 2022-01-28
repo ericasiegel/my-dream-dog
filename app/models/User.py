@@ -1,7 +1,7 @@
 import email
 from app.db import Base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates, relationship
 import bcrypt
 
 # create a salt to hash passwords against
@@ -33,3 +33,5 @@ class User(Base):
             password.encode('utf-8'),
             self.password.encode('utf-8')
         )
+    
+    breed = relationship('Breed')
