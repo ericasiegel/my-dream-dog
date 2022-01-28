@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from flask import Blueprint, request, redirect, jsonify, render_template, session, flash
+from flask import Blueprint, request, redirect, jsonify, render_template, session, url_for
 from app.models import User, Breed
 from app.db import get_db
 
@@ -32,7 +32,7 @@ def signup():
             session['user_id'] = newUser.id
             session['loggedIn'] = True
             #redirect user to dashboard after form is submitted
-            return redirect('/dashboard')
+            return redirect('/')
     except:
         # insert failed, so send error to front end, and rollback
         db.rollback()
@@ -74,7 +74,7 @@ def login():
         session['user_id'] = user.id
         session['loggedIn'] = True
         
-        return redirect('/dashboard')
+        return redirect('/')
     
 @bp.route('/breeds', methods=['POST'])
 def saved_breeds():
@@ -93,11 +93,13 @@ def saved_breeds():
             db.commit()
             # breed_stats(data['id'])
             
-            flash('Breed saved')
+            message = 'Breed Saved!'
+            # return message
             return redirect('/')
             
            
     except:
-        flash('Already saved!')
+        message = 'Breed Already Saved!'
+        # return message
         return redirect('/')
     

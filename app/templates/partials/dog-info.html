@@ -16,17 +16,17 @@
       <div class='card-content'>
         {% if loggedIn == True %}
         <div class='card-icons'>
-          <form method='POST' action='/api/breeds'>
+          <form method='POST' action='/api/breeds' id='norefresh'>
             <button type='submit' name='id' value={{ stats['id'] }}>
               <i class="far fa-save fa-lg"></i>
             </button>
           </form>
-          <form method='POST' action='/' onsubmit="event.preventDefault();">
-            <button type='submit' name='id'>
+          <form method='POST' action='/' id='norefresh'>
+            <button type='submit' value={{ stats['id'] }}>
               <i class="far fa-trash-alt fa-lg"></i>
             </button>
           </form>
-          {{message}}
+          
         </div>
         {% endif %}
         <ol>
