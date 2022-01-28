@@ -26,9 +26,15 @@
             <ol>
               {% for s in saved %}
               <li>
-                <form method='POST' action='/dashboard'>
-                  <button class='breed-btn' name='id' value={{ s['breed_id'] }}>{{ s['name'] }}</button>
-                </form>
+                <div class='saved-btn-row'>
+                  <form method='POST' action='/dashboard'>
+                    <button class='breed-btn' name='id' value={{ s['breed_id'] }}>{{ s['name'] }}</button>
+                  </form>
+                  <form method='POST' action='api/breeds/{{ s['id'] }}'>
+                    <button class='delete-btn' type='submit'>
+                      <i class="far fa-trash-alt fa-lg"></i>
+                    </button></form>
+                </div>
               </li>
               {% endfor %}
           {% else %}

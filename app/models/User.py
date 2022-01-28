@@ -34,4 +34,4 @@ class User(Base):
             self.password.encode('utf-8')
         )
     
-    breed = relationship('Breed')
+    # breed = relationship('Breed')

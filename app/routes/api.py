@@ -76,7 +76,7 @@ def login():
         
         return redirect('/dashboard')
     
-@bp.route('/breeds', methods=['POST', 'DELETE'])
+@bp.route('/breeds', methods=['POST'])
 def saved_breeds():
     db = get_db()
     
@@ -107,15 +107,14 @@ def saved_breeds():
         # return message
         return redirect('/')
 
-@bp.route('/breeds/<id>', methods=['DELETE'])
-def delete():
+@bp.route('/breeds/<int:id>', methods=['POST','DELETE'])
+def delete(id):
     db = get_db()
-    if request.method == 'DELETE':
-        print(id)
-    # try:
-    #     # delete dog from databse
-    #     db.delete(db.query(Breed).filter(Breed.breed_id == id).one())
-    #     db.commit()
-    # except:
-    #     db.rollback()
-    #     return redirect('/')
+    # print(id)
+    # id_delete = Breed.query.get(id)
+    try:
+        db.delete(db.query(Breed).filter(Breed.id == id).one())
+        db.commit()
+        return redirect('/dashboard')
+    except:
+        return('not deleted')
