@@ -1,12 +1,12 @@
-from flask import Blueprint, render_template, session
-from app.models import Breed
+from flask import Blueprint, render_template, session, request
+from app.models import Breed, User
 from app.db import get_db
 from .api_requests import breed_stats
 from .api_requests import breed_info as stats
 
 bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
-@bp.route('/')
+@bp.route('/', methods=['GET', 'POST'])
 def dash():
     # query the Breed database to display the dog names and ids
     db = get_db()
@@ -15,7 +15,10 @@ def dash():
         .filter(Breed.user_id == session.get('user_id'))
         .all()
     )
-    breed_stats(165)
+    if request.method == 'POST':
+        data = request.form
+        breed_stats(data['id'])
+        
     return render_template('dashboard.html', 
                             # card info
                            stats=stats,

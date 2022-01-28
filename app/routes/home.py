@@ -31,13 +31,21 @@ def index():
         except:
             breed_stats(165)
             
+    # query the Breed database to display the dog names and ids
+    db = get_db()
+    single_id = (
+        db.query(Breed)
+        .filter(Breed.user_id == session.get('user_id'))
+        .all()
+    )
 
     return render_template('homepage.html', 
                         # card info
                            stats=stats,
                         # dropdown info
                            breeds=breeds,
-                        
+                        # saved breed names
+                           saved=single_id,
                         #log session info
                         loggedIn=session.get('loggedIn')
                            )
