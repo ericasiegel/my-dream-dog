@@ -1,5 +1,3 @@
-# from crypt import methods
-# from tkinter.tix import Select
 from flask import Blueprint, render_template, request, session, redirect, jsonify
 import random
 import json
@@ -8,7 +6,6 @@ import json
 from .api_requests import breed_stats
 from .api_requests import breed_info as stats
 from .api_requests import breed_list as breeds
-from .api_requests import breed_one
 from app.models import Breed
 from app.db import get_db
 

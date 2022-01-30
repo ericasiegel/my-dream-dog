@@ -19,22 +19,7 @@ def breed_names():
         name_id['breed']=n['name']
         breed_list.append(name_id)
         
-def breed_one(id):
-    """
-    function to return the json data for a single dog breed. After getting the json data
-    we can get the specific name and id for the breed
-    Parameter: (id) is the id of the selected dog breed
-    """
-    breed_url = 'https://api.thedogapi.com/v1/images/search?48dbab43-41dd-4351-9528-5f3aa2a1bd39&include_breed=1'
-    param = {'breed_id': str(id)}
-    response = requests.get(breed_url, params=param)
-    data = json.loads(response.text)[0]
-    
-    # get data from api and add to breed_info{} dictionary
-    name = data['breeds'][0]['name']
-    return name
-
-     
+  
 def breed_stats(id):
     """
     function to return the json data for a single dog breed. After getting the json data
