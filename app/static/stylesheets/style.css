@@ -271,3 +271,15 @@ input:active {
 .logout-form {
     display: flex;
 }
+
+/* QUIZ */
+.form-element label {
+    justify-self: center;
+    margin: 5px 0 5px 0;
+}
+.form-element select {
+    width: 100%;
+    height: 30px;
+    background-color: lightskyblue;
+    margin: 0 0 5px 0;
+}

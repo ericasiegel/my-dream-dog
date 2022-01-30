@@ -1,5 +1,67 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
-5 question quiz to pair user with top 5 dogs
+<section class="hero is-info is-small">
+    <div class="hero-body is-info">
+      <div class="has-text-centered">
+        <p class="subtitle">
+          Find the Breed that is Right for You!
+        </p>
+      </div>
+    </div>
+</section>
+<div class='form-container'>
+    <form class="quiz-form" method='POST' action='/quiz/results'>
+        <div class='form-section'>
+            <div class='form-element'>
+                <label for='size'> Select dog size:</label><br>
+                <select name='size'>
+                    <option value='20'> Small (22lbs or less)</option>
+                    <option value='40'> Medium (23lbs-55lbs)</option>
+                    <option value='20'> Large (56lbs and over)</option>
+                </select>
+            </div>
+            <div  class='form-element'>
+                <label for='size'> Select 5 temperament options</label><br>
+                <select name='temp1'>
+                    {% for t in tl %}
+                        <option value={{ t }}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='form-element'>
+                <select name='temp2'>
+                    {% for t in tl %}
+                        <option value={{ t }}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='form-element'>
+                <select name='temp3'>
+                    {% for t in tl %}
+                        <option value={{ t }}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='form-element'>
+                <select name='temp4'>
+                    {% for t in tl %}
+                        <option value={{ t }}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='form-element'>
+                <select name='temp5'>
+                    {% for t in tl %}
+                        <option value={{ t }}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div>
+          <button class='form-button' type="submit">Find my breed!</button>
+        </div>
+      </form>
+</div>
+
 {% endblock %}

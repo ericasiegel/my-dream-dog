@@ -3,6 +3,7 @@ import json
 
 breed_info = {}
 breed_list = []
+dog_sizes = []
 # breed_single = {}
 
 def breed_names():
@@ -53,7 +54,35 @@ def breed_stats(id):
         breed_info['lifespan'] = data['breeds'][0]['life_span']
         breed_info['image'] = data['url']
         
-        
+def get_size(lbs):
+    breeds_url = 'https://api.thedogapi.com/v1/breeds?48dbab43-41dd-4351-9528-5f3aa2a1bd39'
+    breeds = requests.get(breeds_url)
+    db_list = json.loads(breeds.text)
+    
+    for n in db_list:
+        if 'temperament' in n:
+            s = {}
+            size = n['weight']['imperial']
+            # if '-' in size:
+            #     size = size.split(' - ')[-1]
+            size = float(size.split(' ')[-1])
+            
+            if size <= 22 and lbs <= 22:
+                s['id'] = n['id']
+                s['temperament'] = n['temperament']
+                dog_sizes.append(s)
+                # print('small')
+            elif (size >= 23 and size <= 55) and (lbs >= 23 and lbs <= 55):
+                s['id'] = n['id']
+                s['temperament'] = n['temperament']
+                dog_sizes.append(s)
+                # print('medium')
+            elif lbs >= 56 and size >=56:
+                s['id'] = n['id']
+                s['temperament'] = n['temperament']
+                dog_sizes.append(s)
+                # print('large')
+    # print(len(dog_sizes))        
         
 breed_names()
 # print(breed_info) 
