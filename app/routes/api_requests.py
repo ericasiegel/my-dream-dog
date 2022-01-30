@@ -1,9 +1,10 @@
 import requests
 import json
 
-breed_info = {}
+
 breed_list = []
 dog_sizes = []
+# breed_info = {}
 # breed_single = {}
 
 def breed_names():
@@ -32,6 +33,8 @@ def breed_stats(id):
     response = requests.get(breed_url, params=param)
     data = json.loads(response.text)[0]
     
+    breed_info = {}
+    
     # get data from api and add to breed_info{} dictionary
     try:
         breed_info['id'] = data['breeds'][0]['id']
@@ -54,6 +57,8 @@ def breed_stats(id):
         breed_info['lifespan'] = data['breeds'][0]['life_span']
         breed_info['image'] = data['url']
         
+    return breed_info
+    
 def get_size(lbs):
     breeds_url = 'https://api.thedogapi.com/v1/breeds?48dbab43-41dd-4351-9528-5f3aa2a1bd39'
     breeds = requests.get(breeds_url)
@@ -82,7 +87,44 @@ def get_size(lbs):
                 s['temperament'] = n['temperament']
                 dog_sizes.append(s)
                 # print('large')
-    # print(len(dog_sizes))        
+    # print(len(dog_sizes))  
+    
+def top_stats(id):
+    """
+    function to return the json data for a single dog breed. After getting the json data
+    we can get the specific stats for the breed
+    Parameter: (id) is the id of the selected dog breed
+    """
+    breed_url = 'https://api.thedogapi.com/v1/images/search?48dbab43-41dd-4351-9528-5f3aa2a1bd39&include_breed=1'
+    param = {'breed_id': str(id)}
+    response = requests.get(breed_url, params=param)
+    data = json.loads(response.text)[0]
+    
+    top_info = {}
+    
+    # get data from api and add to breed_info{} dictionary
+    try:
+        top_info['id'] = data['breeds'][0]['id']
+        top_info['name'] = data['breeds'][0]['name']
+        top_info['weight'] = data['breeds'][0]['weight']['imperial']
+        top_info['height'] = data['breeds'][0]['height']['imperial']
+        top_info['use'] = data['breeds'][0]['bred_for']
+        top_info['group'] = data['breeds'][0]['breed_group']
+        top_info['temp'] = data['breeds'][0]['temperament'] 
+        top_info['lifespan'] = data['breeds'][0]['life_span']
+        top_info['image'] = data['url']
+    except:
+        top_info['id'] = data['breeds'][0]['id']
+        top_info['name'] = data['breeds'][0]['name']
+        top_info['weight'] = data['breeds'][0]['weight']['imperial']
+        top_info['height'] = data['breeds'][0]['height']['imperial']
+        # breed_info['use'] = data['breeds'][0]['bred_for']
+        # breed_info['group'] = data['breeds'][0]['breed_group']
+        top_info['temp'] = data['breeds'][0]['temperament'] 
+        top_info['lifespan'] = data['breeds'][0]['life_span']
+        top_info['image'] = data['url']
+        
+    return top_info      
         
 breed_names()
 # print(breed_info) 

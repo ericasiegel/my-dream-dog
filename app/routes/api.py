@@ -3,8 +3,6 @@ from flask import Blueprint, request, redirect, jsonify, render_template, sessio
 from app.models import User, Breed
 from app.db import get_db
 
-from .api_requests import breed_stats
-from .api_requests import breed_info as stats
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 

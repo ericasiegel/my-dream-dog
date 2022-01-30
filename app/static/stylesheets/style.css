@@ -227,6 +227,7 @@ i:hover {
 .form-container {
     display: flex; /* defines a flex container */
     justify-content: center;
+    margin: 20px 0 20px 0;
 }
 input {
     background-color:lightskyblue;

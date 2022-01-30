@@ -3,8 +3,9 @@ import random
 import json
 
 # import files
-from .api_requests import breed_stats
-from .api_requests import breed_info as stats
+# from .api_requests import breed_stats
+from .api_requests import top_stats
+# from .api_requests import breed_info as stats
 from .api_requests import breed_list as breeds
 from app.models import Breed
 from app.db import get_db
@@ -15,18 +16,19 @@ bp = Blueprint('home', __name__, url_prefix='/')
 # route to index.html
 @bp.route('/', methods=['GET', 'POST'])
 def index():
+    stats = {}
     # dispay the breed list for dropdown and breed card
     if request.method == 'POST':
         # breed_id = data.value
         breed_id = list(request.form.listvalues())[0][0]
         # print(breed_id)
-        breed_stats(breed_id)
+        stats = top_stats(breed_id)
     else:
         try:
             random_num = random.randint(1, 264)
-            breed_stats(random_num)
+            stats = top_stats(random_num)
         except:
-            breed_stats(165)
+            stats = top_stats(165)
             
     # query the Breed database to display the dog names and ids
     db = get_db()

@@ -1,11 +1,12 @@
 from flask import Blueprint, render_template, request, session, redirect, jsonify
 from app.db import get_db
+from app.models import Breed
 from .temp_list import temperament_list as tl
-import requests
-import json
 import random
 from .api_requests import get_size
 from .api_requests import dog_sizes
+from .api_requests import top_stats
+# from .api_requests import breed_info as stats
 
 # Blueprint
 bp = Blueprint('quiz', __name__, url_prefix='/quiz')
@@ -63,7 +64,7 @@ def get_temperament(*args):
         top_temps = new_temp_ids + rest
 
     # print(top_temps)
-    print(top_temps[:5])
+    # print(top_temps[:5])
     return top_temps[:5] #return the first 5 in list
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -78,12 +79,41 @@ def quiz():
 def results():
     if request.method == 'POST':
         results = request.form
-        print(results)
+        
+        breed_size = results['size']
+        print(breed_size)
+        
+        get_size(float(breed_size))
+        results_ids = get_temperament(results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])
+        print(results_ids)
+        
+        top_five = []
+        for i in results_ids:
+            # dog = {}
+            print(i)
+            stats = top_stats(i)
+            # dog = stats
+            print(stats)
+            top_five.append(stats)
+        print(top_five)
+        
+        
+        # query the Breed database to display the dog names and ids
+    db = get_db()
+    single_id = (
+        db.query(Breed)
+        .filter(Breed.user_id == session.get('user_id'))
+        .all()
+    )
+    ids = []
+    # print(single_id.__list__)
+    for s in single_id:
+        bid = s.__dict__['breed_id']
+        ids.append(bid)       
         
     return render_template('results.html',
-                            # tl = tl,
+                            top_five = top_five,
+                            ids=ids,
                             loggedIn = session.get('loggedIn')
                             )  
 
-# get_size(17)
-# get_temperament('Strong', 'Quiet', 'Loving', 'Independent', 'Playful')

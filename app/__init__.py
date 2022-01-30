@@ -11,7 +11,7 @@ def create_app(test_config=None):
     app.url_map.strict_slashes = False
     # app uses the key below when creating server-side sessions
     app.config.from_mapping(
-        SECRET_KEY='my_dream_dog'
+        SECRET_KEY='my_dream_dog_secret_key'
     )
     
     # register routes
@@ -23,3 +23,5 @@ def create_app(test_config=None):
     init_db()
     
     return app
+
+# create_app()

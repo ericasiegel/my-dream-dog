@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, session, request
 from app.models import Breed, User
 from app.db import get_db
-import random
-from .api_requests import breed_stats
-from .api_requests import breed_info as stats
+# from .api_requests import breed_stats
+# from .api_requests import breed_info as stats
+from .api_requests import top_stats
+
+# from .api_requests import breed_info as stats
 
 bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
@@ -18,9 +20,10 @@ def dash():
     )
     attribute = 'hidden'
     message = ''
+    stats = {}
     if request.method == 'POST':
             data = request.form
-            breed_stats(data['id'])
+            stats = top_stats(data['id'])
             attribute = ''
             message = 'hidden'
             
