@@ -5,8 +5,8 @@ from .temp_list import temperament_list as tl
 import random
 from .api_requests import get_size
 from .api_requests import dog_sizes
-from .api_requests import top_stats
-# from .api_requests import breed_info as stats
+from .api_requests import breed_stats
+from app.utils.auth import login_required
 
 # Blueprint
 bp = Blueprint('quiz', __name__, url_prefix='/quiz')
@@ -68,6 +68,7 @@ def get_temperament(*args):
     return top_temps[:5] #return the first 5 in list
 
 @bp.route('/', methods=['GET', 'POST'])
+@login_required
 def quiz():
         
     return render_template('quiz.html',
@@ -76,22 +77,23 @@ def quiz():
                             )
 
 @bp.route('/results', methods=['GET', 'POST'])
+@login_required
 def results():
     if request.method == 'POST':
         results = request.form
         
         breed_size = results['size']
-        print(breed_size)
+        # print(breed_size)
         
         get_size(float(breed_size))
         results_ids = get_temperament(results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])
-        print(results_ids)
+        # print(results_ids)
         
         top_five = []
         for i in results_ids:
             # dog = {}
             print(i)
-            stats = top_stats(i)
+            stats = breed_stats(i)
             # dog = stats
             print(stats)
             top_five.append(stats)

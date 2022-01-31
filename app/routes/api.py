@@ -2,7 +2,7 @@ from django.shortcuts import render
 from flask import Blueprint, request, redirect, jsonify, render_template, session, url_for
 from app.models import User, Breed
 from app.db import get_db
-
+from app.utils.auth import login_required
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -75,6 +75,7 @@ def login():
         return redirect('/dashboard')
     
 @bp.route('/breeds', methods=['POST'])
+@login_required
 def saved_breeds():
     db = get_db()
     
@@ -106,6 +107,7 @@ def saved_breeds():
         return redirect('/')
 
 @bp.route('/breeds/<int:id>', methods=['POST','DELETE'])
+@login_required
 def delete(id):
     db = get_db()
     # print(id)

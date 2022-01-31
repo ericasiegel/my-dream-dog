@@ -9,7 +9,10 @@ body, html {
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
-    background-color: #dae7ff;
+    background-image: url('../img/bg2.png');
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 a {
     text-decoration: none;
@@ -109,11 +112,13 @@ h1 {
 }
 .dog-card img {
     max-height: 400px;
+    min-height: 254px;
     display: block;
 }
 .card-content {
     font-size: 12px;
     padding: 5px;
+    background-color: white;
     
 }
 .card-right {

@@ -16,8 +16,10 @@ Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
 # initiates the connection between Base and the database
-def init_db():
+def init_db(app):
     Base.metadata.create_all(engine)
+    # close the database connection
+    app.teardown_appcontext(close_db)
 
 
 def get_db():
@@ -31,3 +33,11 @@ def get_db():
 
 # put 'python3 app/db/__init__.py' into terminal to test db connection
 # if there are no errors the connection was successful
+
+def close_db(e=None):
+    # find and remove db from the g object
+    db = g.pop('db', None)
+    
+    # if db exists then end the connection
+    if db is not None:
+        db.close()

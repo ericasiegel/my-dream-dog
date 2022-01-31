@@ -9,9 +9,8 @@
             Choose a dog breed below to find out more...
           </p>
           <p>
-            <form action='' method='POST' id='norefresh'>
-              <select name='all_breeds'>
-                <option value='0'>Select a Dog Breed...</option>
+            <form action='/' method='POST' id='norefresh'>
+              <select name='ids'>
                 {% for b in breeds %}
                 <option value='{{ b['id'] }}'>{{ b['breed']}}</option>
                 {% endfor %}
