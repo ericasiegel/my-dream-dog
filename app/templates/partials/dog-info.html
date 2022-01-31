@@ -1,25 +1,25 @@
 <div class='dog-card'>
   <div class='card-header'>
     <div>
-      <h2>{{ stats['name'] }}</h2>
+      <h2>{{ stats['breeds'][0]['name'] }}</h2>
     </div>
     <div>
-      <h3>{{ stats['group'] }}</h3>
+      <h3>{{ stats['breeds'][0]['breed_group'] }}</h3>
     </div>
   </div>
 
   <div class='card-main'>
     <div class='card-img'>
-      <img src={{ stats['image'] }} alt={{ stats['breed'] }}>
+      <img src={{ stats['url'] }} alt={{ stats['breeds'][0]['name'] }}>
     </div>
     <div class='card-right'>
       <div class='card-content'>
         {% if loggedIn == True %}
         <div class='card-icons'>
-            {% if stats['id'] not in ids %}
+            {% if stats['breeds'][0]['id'] not in ids %}
               <form method='POST' action='/api/breeds' id='norefresh'>
-                <input type='hidden' name='name' value="{{ stats['name'] }}"></input>
-                <button type='submit' name='id' value={{ stats['id'] }}>
+                <input type='hidden' name='name' value="{{ stats['breeds'][0]['name'] }}"></input>
+                <button type='submit' name='id' value={{ stats['breeds'][0]['id'] }}>
                   <i class="far fa-save fa-lg"></i>
                 </button>
               </form>
@@ -33,27 +33,27 @@
           <li>
             <b>Temperament:</b>
             <br/> 
-            {{ stats['temp'] }}
+            {{ stats['breeds'][0]['temperament'] }}
           </li>
           <li>
             <b>Breed Use:</b>
             <br/> 
-            {{ stats['use'] }}
+            {{ stats['breeds'][0]['bred_for'] }}
           </li>
           <li>
             <b>Lifespan:</b>
             <br/> 
-             {{ stats['lifespan'] }}
+             {{ stats['breeds'][0]['life_span'] }}
           </li>
           <li>
             <b>Height:</b>
             <br/> 
-             {{ stats['height'] }} in.
+             {{ stats['breeds'][0]['height']['imperial'] }} in.
           </li>
           <li>
             <b>Weight:</b>
             <br/> 
-             {{ stats['weight'] }} lbs.
+             {{ stats['breeds'][0]['weight']['imperial'] }} lbs.
           </li>
         </ol>
       </div>

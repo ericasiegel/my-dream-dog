@@ -133,13 +133,17 @@ ol {
 i {
     color:crimson;
 }
+
 .dog-card button {
     padding: 5px;
     border: none;
     margin: 10px;
     background-color: transparent;
 }
-i:hover {
+.dog-card i {
+    color:crimson;
+}
+.dog-card i:hover {
     color:darkgreen;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }

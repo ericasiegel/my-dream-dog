@@ -19,7 +19,7 @@
         Click the button to the right to see your saved breeds.
       </div>
       <div {{attribute}}>
-          {% include "partials/dog-info.html" %}
+        {% include "partials/dog-info.html" %}
       </div>
     </div>
     <div class='saved'>
@@ -43,7 +43,9 @@
               </li>
               {% endfor %}
           {% else %}
-            You don't have any saved breeds.
+            <p align='center'><i>You don't have any saved breeds!</i> </p><br>
+            <p align='center'>Take the <a href='/quiz'>Quiz</a> to find your top matches!</p>
+            <p align='center'>Or search <a href='/'>Here</a></p>
           {% endif %}
       </div>
     </div>

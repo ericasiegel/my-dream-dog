@@ -27,10 +27,7 @@ def breed_names():
   
 def breed_stats(id):
     """
-    Returns a new object from the json data for a single dog breed. 
-    
-    After getting the json data we can get the specific stats for the breed and create
-    a new object with those details.
+    Returns the json data for a single dog breed. 
     
     Parameter (id): is an id for the dog breed
     Precondition: id is an integer
@@ -41,30 +38,9 @@ def breed_stats(id):
     param = {'breed_id': str(id)}
     response = requests.get(breed_url, params=param)
     data = json.loads(response.text)[0]
-    
-    breed_info = {}
-    
-    # get data from api and add to breed_info{} dictionary
-    try:
-        breed_info['id'] = data['breeds'][0]['id']
-        breed_info['name'] = data['breeds'][0]['name']
-        breed_info['weight'] = data['breeds'][0]['weight']['imperial']
-        breed_info['height'] = data['breeds'][0]['height']['imperial']
-        breed_info['use'] = data['breeds'][0]['bred_for']
-        breed_info['group'] = data['breeds'][0]['breed_group']
-        breed_info['temp'] = data['breeds'][0]['temperament'] 
-        breed_info['lifespan'] = data['breeds'][0]['life_span']
-        breed_info['image'] = data['url']
-    except:
-        breed_info['id'] = data['breeds'][0]['id']
-        breed_info['name'] = data['breeds'][0]['name']
-        breed_info['weight'] = data['breeds'][0]['weight']['imperial']
-        breed_info['height'] = data['breeds'][0]['height']['imperial']
-        # breed_info['use'] = data['breeds'][0]['bred_for']
-        # breed_info['group'] = data['breeds'][0]['breed_group']
-        breed_info['temp'] = data['breeds'][0]['temperament'] 
-        breed_info['lifespan'] = data['breeds'][0]['life_span']
-        breed_info['image'] = data['url']
+    # print(data['breeds'])
+    breed_info = data
+    # print(breed_info)
         
     return breed_info
     

@@ -1,11 +1,8 @@
 from flask import Blueprint, render_template, request, session, redirect, jsonify
 import random
-import json
 
 # import files
 from .api_requests import breed_stats
-# from .api_requests import top_stats
-# from .api_requests import breed_info as stats
 from .api_requests import breed_list as breeds
 from app.models import Breed
 from app.db import get_db
@@ -20,11 +17,11 @@ def index():
     # dispay the breed list for dropdown and breed card
     if request.method == 'POST':
         data = request.form
-        print(data)
+        # print(data)
         breed_id = data['ids']
         
         # breed_id = list(request.form.listvalues())[0][0]
-        print(breed_id)
+        # print(breed_id)
         stats = breed_stats(breed_id)
     else:
         try:

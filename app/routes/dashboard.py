@@ -3,6 +3,7 @@ from app.models import Breed, User
 from app.db import get_db
 from .api_requests import breed_stats
 from app.utils.auth import login_required
+import random
 
 bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
@@ -16,19 +17,7 @@ def dash():
         .filter(Breed.user_id == session.get('user_id'))
         .all()
     )
-    attribute = 'hidden'
-    message = ''
-    stats = {}
-    if request.method == 'POST':
-            data = request.form
-            stats = breed_stats(data['id'])
-            attribute = ''
-            message = 'hidden'
-            
-    else:
-        attribute = 'hidden'
-        message = ''
-
+    
     ids = []
     # print(single_id.__list__)
     for s in single_id:
@@ -36,6 +25,25 @@ def dash():
         ids.append(bid)
         # print(s.__dict__)
     # print(ids)
+
+    attribute = ''
+    message = ''
+    stats = {}
+    if request.method == 'POST':
+            data = request.form
+            # print(data)
+            stats = breed_stats(data['id'])
+
+            
+            attribute = ''
+            message = 'hidden'
+            
+    else:
+        stats = breed_stats(1)
+        attribute = 'hidden'
+        message = ''
+    # print(stats)
+    
         
     return render_template('dashboard.html', 
                             # card info

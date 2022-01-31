@@ -91,13 +91,11 @@ def results():
         
         top_five = []
         for i in results_ids:
-            # dog = {}
-            print(i)
+            # print(i)
             stats = breed_stats(i)
-            # dog = stats
-            print(stats)
+            # print(stats)
             top_five.append(stats)
-        print(top_five)
+        # print(top_five)
         
         
         # query the Breed database to display the dog names and ids
