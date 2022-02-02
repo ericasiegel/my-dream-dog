@@ -75,10 +75,11 @@ def quiz():
                             tl = tl,
                             loggedIn = session.get('loggedIn')
                             )
-
+top_five = []
 @bp.route('/results', methods=['GET', 'POST'])
 @login_required
 def results():
+    # top_five = []
     if request.method == 'POST':
         results = request.form
         
@@ -89,7 +90,7 @@ def results():
         results_ids = get_temperament(results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])
         # print(results_ids)
         
-        top_five = []
+        
         for i in results_ids:
             # print(i)
             stats = breed_stats(i)

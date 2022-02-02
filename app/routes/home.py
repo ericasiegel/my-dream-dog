@@ -14,14 +14,13 @@ bp = Blueprint('home', __name__, url_prefix='/')
 @bp.route('/', methods=['GET', 'POST'])
 def index():
     stats = {}
+    test_data = request.get_json()
+    print(test_data)
     # dispay the breed list for dropdown and breed card
     if request.method == 'POST':
         data = request.form
         # print(data)
         breed_id = data['ids']
-        
-        # breed_id = list(request.form.listvalues())[0][0]
-        # print(breed_id)
         stats = breed_stats(breed_id)
     else:
         try:

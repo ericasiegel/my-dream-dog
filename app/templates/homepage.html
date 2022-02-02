@@ -9,10 +9,10 @@
             Choose a dog breed below to find out more...
           </p>
           <p>
-            <form action='/' method='POST' id='norefresh'>
+            <form action='/' method='POST'>
               <select name='ids'>
                 {% for b in breeds %}
-                <option value='{{ b['id'] }}'>{{ b['breed']}}</option>
+                <option name='id' value='{{ b['id'] }}'>{{ b['breed']}}</option>
                 {% endfor %}
               </select>
               <input type='submit' name='Submit' value='Submit'/>
@@ -23,15 +23,10 @@
       {{message}}
     </section>
     <div class='container'>
-      <div class='dash'>
+      <div class='dash norefresh'>
           {% include "partials/dog-info.html" %}
       </div>
     </div>
 
-  <script>
-    async funciton formHandler(event) {
-      event.preventDefault();
-    }
-    document.getElementById('norefresh').addEventListener('submit', formHandler)
-  </script>
+
 {% endblock %}

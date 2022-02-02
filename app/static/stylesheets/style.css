@@ -31,16 +31,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-/* header {
-    border-bottom: 1px solid #003ba7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1%;
-}
-header h1 {
-    font-size: 30px;
-} */
+
 main {
     flex: 1;
     padding: 2% 4%;
@@ -109,6 +100,7 @@ h1 {
 .card-main {
     display: flex;
     justify-content: space-between;
+    background-color: white;
 }
 .dog-card img {
     max-height: 400px;
@@ -133,7 +125,6 @@ ol {
 i {
     color:crimson;
 }
-
 .dog-card button {
     padding: 5px;
     border: none;
@@ -182,6 +173,7 @@ i {
     flex-direction: row; /* aligns content along the main axes */
     justify-content: space-between; /* items are evenly distributed in the line */
     align-items: center; /* items are centered on the cross axis */
+    
 }
 .dash {
     flex: 4; /* width of the flexbox child */

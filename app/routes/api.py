@@ -78,6 +78,24 @@ def login():
 @login_required
 def saved_breeds():
     db = get_db()
+    # data = request.get_json()
+    
+    # try:
+    #     newBreed = Breed(
+    #         breed_id = data['breed_id'],
+    #         name = data['name'],
+    #         user_id = session.get('user_id')
+    #     )
+        
+    #     db.add(newBreed)
+    #     db.commit()
+        
+    #     return jsonify(id = newBreed.id)
+    # except:
+    #     db.rollback()
+    #     return jsonify(message = 'save failed')
+    
+
     
     try:
         if request.method == 'POST':
@@ -94,10 +112,7 @@ def saved_breeds():
             db.commit()
             # breed_stats(data['id'])
 
-            
-            message = 'Breed Saved!'
-            # return message
-            return redirect('/dashboard')
+            return redirect('/')
 
            
     except:
