@@ -12,10 +12,12 @@
             <form action='/' method='POST'>
               <select name='ids'>
                 {% for b in breeds %}
-                <option name='id' value='{{ b['id'] }}'>{{ b['breed']}}</option>
+                <option name='id' value='{{ b['id'] }}' required>{{ b['breed']}}</option>
                 {% endfor %}
               </select>
+
               <input type='submit' name='Submit' value='Submit'/>
+
             </form>
           </p>
         </div>

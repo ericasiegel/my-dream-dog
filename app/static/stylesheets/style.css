@@ -103,7 +103,7 @@ h1 {
     background-color: white;
 }
 .dog-card img {
-    max-height: 400px;
+    max-width: 500px;
     min-height: 300px;
     display: block;
 }
