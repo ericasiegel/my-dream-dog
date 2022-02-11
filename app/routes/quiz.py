@@ -11,8 +11,6 @@ from app.utils.auth import login_required
 # Blueprint
 bp = Blueprint('quiz', __name__, url_prefix='/quiz')
 
-
-
     
 def get_temperament(*args):
     """
@@ -75,11 +73,11 @@ def quiz():
                             tl = tl,
                             loggedIn = session.get('loggedIn')
                             )
-top_five = []
+# top_five = []
 @bp.route('/results', methods=['GET', 'POST'])
 @login_required
 def results():
-    # top_five = []
+    top_five = []
     if request.method == 'POST':
         results = request.form
         
@@ -96,7 +94,7 @@ def results():
             stats = breed_stats(i)
             # print(stats)
             top_five.append(stats)
-        # print(top_five)
+    # print(top_five)
         
         
         # query the Breed database to display the dog names and ids

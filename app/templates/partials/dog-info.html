@@ -17,15 +17,36 @@
         {% if loggedIn == True %}
         <div class='card-icons'>
             {% if stats['breeds'][0]['id'] not in ids %}
-              <div id='not-saved' style='display:block' onclick = "replace('not-saved', 'saved')">
-                <form action='/api/breeds' method="POST">
-                  <input type='hidden' name='name' value="{{ stats['breeds'][0]['name'] }}"></input>
-                  <button type='submit' name='id' value={{ stats['breeds'][0]['id'] }}>
+
+              {% if top_five|length > 0 %}
+              <div id='not-saved{{loop.index}}' style='display:block'>
+              {% else %}
+              <div id='not-saved' style='display:block'>
+              {% endif %}
+                {% if top_five|length > 0 %}
+                <form class='norefresh{{loop.index}}'>
+                {% else %}
+                <form class='norefresh'>
+                {% endif %}
+                
+                  {% if top_five|length > 0 %}
+                  <input type='hidden' id='form-id{{loop.index}}' name='id' value="{{ stats['breeds'][0]['id'] }}"></input>
+                  <input type='hidden' id='form-name{{loop.index}}' name='name' value="{{ stats['breeds'][0]['name'] }}"></input>
+                  {% else %}
+                  <input type='hidden' id='form-name' name='name' value="{{ stats['breeds'][0]['name'] }}"></input>
+                  <input type='hidden' id='form-id' value="{{ stats['breeds'][0]['id'] }}"></input>
+                  {% endif %}
+
+                  <button type='submit' name='submit' value='submit'>                 
                     <i class="far fa-save fa-lg"></i>
                   </button>
                 </form>
               </div>
+              {% if top_five|length > 0 %}
+              <div id='saved{{loop.index}}' style='display:none'>
+              {% else %}
               <div id='saved' style='display:none'>
+              {% endif %}
                 Saved!
               </div>
             {% else %}

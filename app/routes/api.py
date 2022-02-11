@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from flask import Blueprint, request, redirect, jsonify, render_template, session, url_for
+from flask import Blueprint, request, redirect, jsonify, render_template, session
 from app.models import User, Breed
 from app.db import get_db
 from app.utils.auth import login_required
@@ -78,48 +78,44 @@ def login():
 @login_required
 def saved_breeds():
     db = get_db()
-    # data = request.get_json()
-    
-    # try:
-    #     newBreed = Breed(
-    #         breed_id = data['breed_id'],
-    #         name = data['name'],
-    #         user_id = session.get('user_id')
-    #     )
-        
-    #     db.add(newBreed)
-    #     db.commit()
-        
-    #     return jsonify(id = newBreed.id)
-    # except:
-    #     db.rollback()
-    #     return jsonify(message = 'save failed')
-    
-
-    
+    data = request.get_json()
+    # print(data, 'DATA***')
     try:
-        if request.method == 'POST':
-            data = request.form
-
-            # print(data['name'])
-            newBreed = Breed(
-                breed_id = data['id'],
-                name = data['name'],
-                user_id = session.get('user_id')
-            )
-            
-            db.add(newBreed)
-            db.commit()
-            # breed_stats(data['id'])
-
-            return redirect('/')
-
-           
+        newBreed = Breed(
+            breed_id = data['breed_id'],
+            name = data['name'],
+            user_id = session.get('user_id')
+        )
+        # print(newBreed)
+        db.add(newBreed)
+        db.commit()
+        
+        return jsonify(id = newBreed.id)
     except:
         db.rollback()
-        message = 'Breed Already Saved!'
-        # return message
-        return redirect('/')
+        message = 'save failed'
+        return message
+    
+
+    # code using Python only
+    # try:
+    #     if request.method == 'POST':
+    #         data = request.form
+    #         print(data, 'DATA***')
+    #         newBreed = Breed(
+    #             breed_id = data['id'],
+    #             name = data['name'],
+    #             user_id = session.get('user_id')
+    #         )
+    #         db.add(newBreed)
+    #         db.commit()
+    #         # breed_stats(data['id'])
+    #         return redirect('')        
+    # except:
+    #     db.rollback()
+    #     message = 'Breed Already Saved!'
+    #     # return message
+    #     return redirect('/')
 
 @bp.route('/breeds/<int:id>', methods=['POST','DELETE'])
 @login_required
