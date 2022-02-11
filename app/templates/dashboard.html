@@ -5,7 +5,7 @@
     <div class="hero-body is-info">
       <div class="has-text-centered">
         <p class="subtitle">
-          Dashboard
+          {{ username }}'s Dashboard
         </p>
         <p>
           Find your saved dogs here...
@@ -24,7 +24,7 @@
     </div>
     <div class='saved'>
       <div class='saved-card-header'>
-          <h3>Your Saved Dog Breeds</h3>
+          <h3>{{ username }}'s Saved Dog Breeds</h3>
       </div>
       <div class='saved-card-content'>
           {% if saved|length > 0 %}

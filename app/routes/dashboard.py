@@ -44,6 +44,15 @@ def dash():
         message = ''
     # print(stats)
     
+    # query the DB to get user's username
+    user_name = (
+        db.query(User)
+        .filter(User.id == session.get('user_id'))
+        .one()
+    )
+    
+    username = user_name.__dict__['username']
+    # print(user_name.__dict__['username'])
         
     return render_template('dashboard.html', 
                             # card info
@@ -52,6 +61,7 @@ def dash():
                            saved=single_id,
                             attribute=attribute,
                             message=message,
+                            username = username,
                            #log session info
                            ids=ids,
                             loggedIn=session.get('loggedIn')

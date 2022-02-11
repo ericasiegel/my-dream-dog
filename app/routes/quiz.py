@@ -88,7 +88,7 @@ def results():
         results = request.form
         
         breed_size = results['size']
-        print(breed_size)
+        # print(breed_size)
         
         sizes = get_size(breed_size)
         results_ids = get_temperament(sizes, results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])

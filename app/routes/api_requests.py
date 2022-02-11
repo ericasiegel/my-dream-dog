@@ -78,19 +78,19 @@ def get_size(lbs):
                     s['id'] = n['id']
                     s['temperament'] = n['temperament']
                     dog_sizes.append(s)
-                    print(size)
+                    # print(size)
             elif lbs == 'medium':
                 if size >= 23 and size <= 55:
                     s['id'] = n['id']
                     s['temperament'] = n['temperament']
                     dog_sizes.append(s)
-                    print(size)
+                    # print(size)
             elif lbs == 'large':
                 if size >=56:
                     s['id'] = n['id']
                     s['temperament'] = n['temperament']
                     dog_sizes.append(s)
-                    print(size)
+                    # print(size)
                     
             # print(s)
     return dog_sizes
