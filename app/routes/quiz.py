@@ -17,14 +17,20 @@ def get_temperament(*args):
     function to return the list of dog breeds and ids from dog api
     """
     
+    # print(args)
+    sizes = args[0]
+    temps = args[1:]
+    
+    
     temperament_ids = []
     new_temp_ids = []
     top_temps = []
-    # print(args)
+    # print(top_temps)
+    
     
     # get the list of dog ids that match the temperament args
-    for c in args:
-        for t in dog_sizes:
+    for c in temps:
+        for t in sizes:
             # print(t['breed_group'])
             if c in t["temperament"]:
                 temperament_ids.append(t['id'])
@@ -82,11 +88,11 @@ def results():
         results = request.form
         
         breed_size = results['size']
-        # print(breed_size)
+        print(breed_size)
         
-        get_size(float(breed_size))
-        results_ids = get_temperament(results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])
-        # print(results_ids)
+        sizes = get_size(breed_size)
+        results_ids = get_temperament(sizes, results['temp1'],results['temp2'],results['temp3'],results['temp4'],results['temp5'])
+        # print(sizes)
         
         
         for i in results_ids:

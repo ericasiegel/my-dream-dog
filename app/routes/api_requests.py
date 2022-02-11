@@ -52,7 +52,7 @@ def get_size(lbs):
     Then create a new object with the dog id and temperament that gets appended to a new global
     dictionary. 
     
-    Parameter (lbs): is an number specifying the dog size in weight
+    Parameter (lbs): is a string
     Precondition: id is a float
     
     """
@@ -61,6 +61,8 @@ def get_size(lbs):
     breeds = requests.get(breeds_url)
     db_list = json.loads(breeds.text)
     
+    dog_sizes = []
+    
     # iterate through the json data to compare the sizes
     for n in db_list:
         if 'temperament' in n:
@@ -68,23 +70,30 @@ def get_size(lbs):
             # get the max weight from api
             size = n['weight']['imperial']
             size = float(size.split(' ')[-1])
+            # print(size)
+            # print(lbs)
             
-            if size <= 22 and lbs <= 22:
-                s['id'] = n['id']
-                s['temperament'] = n['temperament']
-                dog_sizes.append(s)
-                # print('small')
-            elif (size >= 23 and size <= 55) and (lbs >= 23 and lbs <= 55):
-                s['id'] = n['id']
-                s['temperament'] = n['temperament']
-                dog_sizes.append(s)
-                # print('medium')
-            elif lbs >= 56 and size >=56:
-                s['id'] = n['id']
-                s['temperament'] = n['temperament']
-                dog_sizes.append(s)
-                # print('large')
-    # print(len(dog_sizes))  
+            if lbs == 'small':
+                if size < 23.0:
+                    s['id'] = n['id']
+                    s['temperament'] = n['temperament']
+                    dog_sizes.append(s)
+                    print(size)
+            elif lbs == 'medium':
+                if size >= 23 and size <= 55:
+                    s['id'] = n['id']
+                    s['temperament'] = n['temperament']
+                    dog_sizes.append(s)
+                    print(size)
+            elif lbs == 'large':
+                if size >=56:
+                    s['id'] = n['id']
+                    s['temperament'] = n['temperament']
+                    dog_sizes.append(s)
+                    print(size)
+                    
+            # print(s)
+    return dog_sizes
     
         
 breed_names()
