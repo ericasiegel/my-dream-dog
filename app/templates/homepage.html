@@ -20,12 +20,14 @@
 
             </form>
           </p>
+          {% if loggedIn != True %}
           <br />
           <p>
             <h3>
               <a href='/signup'>Create an account</a> or <a href='/login'>Log in</a> to save your favorite breeds and take the quiz to find the right dog breed for you!
             </h3>
           </p> 
+          {% endif %}
         </div>
       </div>
       {{message}}
