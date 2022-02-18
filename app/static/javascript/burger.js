@@ -6,4 +6,4 @@ function burger_menu () {
     menu.classList.toggle('is-active')
 }
 
-document.addEventListener('click', burger_menu)
+burger.addEventListener('click', burger_menu)
