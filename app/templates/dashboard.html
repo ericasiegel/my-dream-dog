@@ -32,7 +32,7 @@
               {% for s in saved %}
               <li>
                 <div class='saved-btn-row'>
-                  <form method='POST' action='/dashboard'>
+                  <form class='name-form' method='POST' action='/dashboard'>
                     <button class='breed-btn' name='id' value={{ s['breed_id'] }}>{{ s['name'] }}</button>
                   </form>
                   <form method='POST' action='api/breeds/{{ s['id'] }}'>

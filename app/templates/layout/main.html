@@ -13,6 +13,7 @@
 
 <body>
   <header>
+
     <section class="hero is-info is-small">
       <!-- Hero head: will stick at the top -->
       <div class="hero-head">
@@ -24,10 +25,17 @@
                   <a href='/'>My Dream Dog</a>
                 </h1>
               </a>
-              <span class="navbar-burger" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span>
+                </span>
+                <span>
+                </span>
+                <span>
+                </span>
+                <span>
+                </span>
+                <span>
+                </span>
               </span>
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
@@ -40,11 +48,11 @@
                     Quiz
                   </a>
                   <form class='logout-form' action='/api/users/logout' method='POST'>
-                    <button class='main-button' type='submit'>Logout</button>
+                    <button class='main-button' type='submit'>Log out</button>
                   </form>
                 {% else %}
-                  <button class='main-button' onclick="location.href='/login';">Login</button>
-                  <button class='main-button' onclick="location.href='/signup';">Signup</button>
+                  <button class='main-button' onclick="location.href='/login';">Log in</button>
+                  <button class='main-button' onclick="location.href='/signup';">Sign up</button>
                 {% endif %}
               </div>
             </div>
@@ -65,7 +73,7 @@
   </div>
   
 
-
+  <script language="JavaScript" type="text/javascript"  src='/javascript/burger.js'></script>
 </body>
 
 </html>

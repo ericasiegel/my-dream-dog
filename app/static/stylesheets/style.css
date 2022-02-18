@@ -31,7 +31,10 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-
+button {
+    color: black;
+    font-size: 20px;
+}
 main {
     flex: 1;
     padding: 2% 4%;
@@ -284,4 +287,32 @@ input:active {
     height: 30px;
     background-color: lightskyblue;
     margin: 0 0 5px 0;
+}
+
+/* Media Queries for phone sizes */
+@media screen and (max-width: 980px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+    .saved {
+        width: -webkit-fill-available;
+
+    }
+    .name-form {
+        flex: 1;
+    }
+    .breed-btn {
+        width: 100%;
+    }
+    .dog-card {
+        width: -webkit-fill-available;
+    }
+    .card-main {
+        display: flex;
+        flex-direction: column;
+    } 
+    .dog-card img {
+        max-width: 100%;
+        min-height: auto;
+    } 
 }
