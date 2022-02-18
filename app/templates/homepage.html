@@ -10,13 +10,13 @@
           </p>
           <p>
             <form action='/' method='POST'>
-              <select name='ids'>
+              <select name='ids' class='dropdown dropdown-content'>
                 {% for b in breeds %}
                 <option name='id' value='{{ b['id'] }}' required>{{ b['breed']}}</option>
                 {% endfor %}
               </select>
 
-              <input type='submit' name='Submit' value='Submit'/>
+              <input class='main-button' type='submit' name='Submit' value='Submit'/>
 
             </form>
           </p>
