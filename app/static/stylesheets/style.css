@@ -281,6 +281,7 @@ input:active {
     padding: 10px;
     width: 100%;
     font-size: 15px;
+    color: black;
 }
 .form-button:hover {
     background-color:#99ddff;
