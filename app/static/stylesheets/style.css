@@ -322,7 +322,9 @@ input:active {
     font-size: 15px;
     border-radius: 20px;
 }
-
+.navbar-burger {
+    color: white;
+}
 /* Media Queries for phone sizes */
 @media screen and (max-width: 980px) {
     .container {
