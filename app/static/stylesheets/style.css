@@ -361,7 +361,7 @@ input:active {
     } 
     .dog-card img {
         max-width: 100%;
-        min-height: auto;
+        min-height: 30%;
     } 
     .main-button {
         margin-top: 10px;
